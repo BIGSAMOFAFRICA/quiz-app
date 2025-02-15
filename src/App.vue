@@ -1,14 +1,14 @@
-<template>
+add a copyright to it<template>
   <div class="container">
     <div class="quiz-wrapper">
       <h1 class="title">Interactive Quiz App</h1>
       <Quiz />
       <DragAndDrop />
     </div>
-  </div>
-  <footer class="footer">
+    <footer class="footer">
       <p>&copy; 2025 Olabisi Samuel. All Rights Reserved.</p>
     </footer>
+  </div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style>
-
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f3f4f6;
