@@ -5,6 +5,10 @@
       <Quiz />
       <DragAndDrop />
     </div>
+    <!-- Footer with Copyright -->
+    <footer class="footer">
+      <p>&copy; 2025 Olabisi Samuel. All Rights Reserved.</p>
+    </footer>
   </div>
 </template>
 
@@ -33,6 +37,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -50,5 +55,22 @@ body {
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
+}
+
+/* Footer Styles */
+.footer {
+  width: 100%;
+  background-color: #f3f4f6;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.footer p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
 }
 </style>
