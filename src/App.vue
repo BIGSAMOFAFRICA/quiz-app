@@ -6,6 +6,9 @@
       <DragAndDrop />
     </div>
   </div>
+  <footer class="footer">
+      <p>&copy; 2025 Olabisi Samuel. All Rights Reserved.</p>
+    </footer>
 </template>
 
 <script>
@@ -21,7 +24,7 @@ export default {
 </script>
 
 <style>
-/* Global Styles */
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f3f4f6;
