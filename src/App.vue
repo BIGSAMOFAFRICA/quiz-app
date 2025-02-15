@@ -1,35 +1,35 @@
 <template>
-  <div class="app-container">
+  <div class="container">
     <div class="quiz-wrapper">
       <h1 class="title">Interactive Quiz App</h1>
       <Quiz />
-      <DragDrop />
+      <DragAndDrop />
     </div>
   </div>
 </template>
 
 <script>
-import Quiz from './components/Quiz.vue';
-import DragDrop from './components/DragDrop.vue';
+import Quiz from './components/Quiz.vue'
+import DragAndDrop from './components/DragDrop.vue'
 
 export default {
   components: {
     Quiz,
-    DragDrop
+    DragAndDrop
   }
-};
+}
 </script>
 
 <style>
 /* Global Styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
   margin: 0;
   padding: 0;
-  background-color: #f7f8fc;
 }
 
-.app-container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,19 +37,18 @@ body {
 }
 
 .quiz-wrapper {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
   width: 100%;
-  max-width: 800px;
 }
 
 .title {
-  text-align: center;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 40px;
-  color: #4e73df;
+  text-align: center;
+  margin-bottom: 20px;
 }
 </style>

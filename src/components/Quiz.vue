@@ -1,15 +1,38 @@
 <template>
   <div class="quiz-container">
-    <h2>Multiple Choice Quiz</h2>
-    <div v-for="(question, index) in questions" :key="index" class="question">
-      <p>{{ question.text }}</p>
-      <div v-for="(answer, idx) in question.answers" :key="idx" class="answer">
-        <button @click="checkAnswer(question.correct, answer)">
-          {{ answer }}
-        </button>
+    <!-- Multiple Choice Question -->
+    <div class="question-container">
+      <h2 class="question">What is the capital of France?</h2>
+      <div class="options">
+        <div 
+          v-for="(option, index) in options"
+          :key="index"
+          class="option"
+          @click="selectOption(option)">
+          <input 
+            type="radio" 
+            :id="'option' + index"
+            v-model="selectedOption"
+            :value="option" />
+          <label :for="'option' + index">{{ option }}</label>
+        </div>
       </div>
     </div>
-    <p v-if="feedback" :class="feedbackClass">{{ feedback }}</p>
+
+    <!-- Feedback Message -->
+    <div v-if="feedback" :class="feedbackClass" class="feedback">
+      {{ feedbackMessage }}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-btn-container">
+      <button 
+        @click="checkAnswer"
+        :disabled="!selectedOption"
+        class="submit-btn">
+        Submit Answer
+      </button>
+    </div>
   </div>
 </template>
 
@@ -17,66 +40,103 @@
 export default {
   data() {
     return {
-      questions: [
-        {
-          text: 'What is the capital of France?',
-          answers: ['Paris', 'London', 'Berlin', 'Madrid'],
-          correct: 'Paris',
-        },
-      ],
-      feedback: '',
-      feedbackClass: '',
+      options: ["Berlin", "Madrid", "Paris", "Rome"],
+      correctAnswer: "Paris",
+      selectedOption: "",
+      feedback: false,
+      feedbackClass: "",
+      feedbackMessage: ""
     };
   },
   methods: {
-    checkAnswer(correctAnswer, answer) {
-      if (answer === correctAnswer) {
-        this.feedback = 'Correct!';
-        this.feedbackClass = 'correct';
-      } else {
-        this.feedback = 'Wrong answer, try again!';
-        this.feedbackClass = 'wrong';
-      }
+    selectOption(option) {
+      this.selectedOption = option;
     },
-  },
+    checkAnswer() {
+      if (this.selectedOption === this.correctAnswer) {
+        this.feedbackClass = "success";
+        this.feedbackMessage = "Correct!";
+      } else {
+        this.feedbackClass = "error";
+        this.feedbackMessage = "Incorrect. Try Again!";
+      }
+      this.feedback = true;
+    }
+  }
 };
 </script>
 
 <style scoped>
 .quiz-container {
-  background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
 }
 
-.question {
+.question-container {
   margin-bottom: 20px;
 }
 
-.answer button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.question {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.options {
   margin-top: 10px;
 }
 
-.answer button:hover {
-  background-color: #0056b3;
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
-.correct {
-  color: green;
+.option input {
+  margin-right: 10px;
 }
 
-.wrong {
-  color: red;
+.option:hover {
+  background-color: #f1f5f9;
+}
+
+.feedback {
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.error {
+  background-color: #f44336;
+  color: white;
+}
+
+.submit-btn-container {
+  text-align: center;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+.submit-btn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
 }
 </style>
